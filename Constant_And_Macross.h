@@ -11,10 +11,10 @@ extern std::string _choose_format_file;
 
 extern HANDLE hConsole;
 #define GET_CONSOLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-#define U_COLOR SetConsoleTextAttribute(hConsole, 10); // Green - User Console Color
-#define A_COLOR  SetConsoleTextAttribute(hConsole, 15);// White - Application Console Color
-#define E_COLOR  SetConsoleTextAttribute(hConsole, 4);// Red - Error Console Color
-#define S_COLOR  SetConsoleTextAttribute(hConsole, 2);
+#define U_COLOR SetConsoleTextAttribute(hConsole, 10);  // Green - User Console Color
+#define A_COLOR  SetConsoleTextAttribute(hConsole, 15); // White - Application Console Color
+#define E_COLOR  SetConsoleTextAttribute(hConsole, 4);  // Red - Error Console Color
+#define S_COLOR  SetConsoleTextAttribute(hConsole, 2);  // Dark Green - Success Console Color
 
 #pragma endregion Select Console Color
 
