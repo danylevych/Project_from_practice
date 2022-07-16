@@ -38,10 +38,36 @@ void AddStudent(std::string path)
 	}
 
 }
-
 void SwapPath(std::string& path, std::string number)
 {
-	path = "PayInfoClass" + number + _choose_format_file;
+	while (true)
+	{
+		if (ChechClass(number))
+		{
+			path = "PayInfoClass" + number + _choose_format_file; return;
+		}
+		else
+		{
+			E_COLOR std::cout << "Неправильно введений номер класу!!!" << std::endl; A_COLOR
+			std::cout << "Введіть номер класу ще раз "; std::cin >> number;
+			system("cls");
+		}
+	}
+	
+}
+static bool ChechClass(const std::string& number) 
+{
+	if (number.size() == 1 || number.size() == 2)
+	{
+		for (int i = 0, x = number.size(); i < x; i++)
+			if (!isdigit(number[i]))
+				return false;
+		int num = atoi(number.c_str());
+		if (num >= 1 && num <= 11)
+			return true;
+		else
+			return false;
+	}
 }
 void Choose_File_Format()
 {
@@ -96,7 +122,6 @@ const std::string Read_Format_File()
 		return format;
 	}
 }
-
 void SaveInFile(Student& st, const std::string& path)
 {
 	std::ofstream out;
@@ -114,7 +139,6 @@ void SaveInFile(Student& st, const std::string& path)
 	}
 	out.close();
 }
-
 int ReadInfo(std::deque<Data>& data, const std::string path)
 {
 	Student st;
@@ -147,7 +171,6 @@ void DeleteDeque(std::deque<Data>& data)
 	while (!data.empty())
 		data.pop_back();
 }
-
 void PrintInfo(std::deque<Data>& data)
 {
 	for (auto& element : data)
@@ -157,7 +180,6 @@ void PrintInfo(std::deque<Data>& data)
 		std::cout << "---------------------------------------------------------------------------\n";
 	}
 }
-
 void SearchInfo(std::deque<Data>& data, const std::string& name, const std::string& shurname)
 {
 	bool check = false;
@@ -175,7 +197,6 @@ void SearchInfo(std::deque<Data>& data, const std::string& name, const std::stri
 		E_COLOR std::cout << "Студента НЕ ЗНАЙДЕНО!!!" << std::endl; A_COLOR
 	}
 }
-
 void SortingAlpavit(std::deque<Data>& data, void (*func)(Data&, Data&))
 {
 	for (size_t i = 0, n = data.size(); i < n; i++)
@@ -200,7 +221,6 @@ void Sort_for_Z_to_A(Data& data1, Data& data2)
 		std::swap<Data>(data1, data2);
 	}
 }
-
 void Delete_Oll_Info(const std::string path)
 {
 	std::ofstream out(path);
@@ -240,7 +260,6 @@ void DeleteInfo(std::deque<Data>& data, const std::string path, const std::strin
 		E_COLOR std::cout << "Дані НЕ видалено, учня не знайдено!!!" << std::endl; A_COLOR
 	}
 }
-
 void FormatInfo(std::deque<Data>& data, const std::string path, const std::string& name, const std::string& shurname)
 {
 	GET_CONSOLE
@@ -283,7 +302,6 @@ void FormatInfo(std::deque<Data>& data, const std::string path, const std::strin
 		E_COLOR std::cout << "Дані НЕ форматовано, учня не знайдено!!!" << std::endl; A_COLOR
 	}
 }
-
 static void FormatSNP_and_number(Student& st)
 {
 	GET_CONSOLE
@@ -316,7 +334,6 @@ static void FormatSNP_and_number(Student& st)
 			} while (!Check_Number(st.number));
 		}
 }
-
 static void FormatPayment(Student& st)
 {
 	GET_CONSOLE
@@ -376,7 +393,6 @@ static void FormatPayment(Student& st)
 			std::cout << "За травень: "; U_COLOR std::cin >> st.pay.PayMay; A_COLOR
 		}
 }
-
 static bool Check_Number(const std::string& number)
 {
 	if (number.size() > 10 || number.size() < 10)
@@ -387,11 +403,10 @@ static bool Check_Number(const std::string& number)
 			return false;
 	return true;
 }
-
 void Convert(std::deque<Data>&data, std::string &path, std::string& number)
 {
 	SwapPath(path, number);
-	if (!ReadInfo(data, path))
+	if (ReadInfo(data, path))
 		return;
 	Choose_File_Format();
 	SwapPath(path, number);
@@ -409,7 +424,6 @@ void Convert(std::deque<Data>&data, std::string &path, std::string& number)
 	th.join();
 
 }
-
 int Loading(time_t t, std::string Text)
 {
 	int proces = 100, n = 0;

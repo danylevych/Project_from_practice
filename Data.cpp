@@ -1,9 +1,7 @@
 #include "Data.h"
 #include "Constant_And_Macross.h"
 #include <iostream>
-#include <fstream>
 #include <string>
-#include <deque>
 
 //HANDLE hConsole;
 Data::Data()

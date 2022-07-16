@@ -32,7 +32,7 @@ int main()
 	GET_CONSOLE
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	Loading(5, "Завантаження");
+	//Loading(5, "Завантаження");
 
 	bool check = true;
 	std::string name, shurname;
@@ -61,20 +61,31 @@ int main()
 			SwapPath(path, number);
 			system("cls");
 			if (!ReadInfo(data, path))
-				PrintInfo(data);
+			{
+				if (!data.empty())
+					PrintInfo(data);
+				else
+					{ E_COLOR std::cout << "Даних у цьому файлі НЕМАЄ!!!" << std::endl; A_COLOR }
+			}
 			system("pause");
 			break;
 
 		case 3:
 			system("cls");
 			std::cout << "Введіть клас, у якому навчається учень: "; U_COLOR std::cin >> number; A_COLOR
-			std::cout << "Введіть Ім’я учня: "; U_COLOR std::cin >> name; A_COLOR
-			std::cout << "Введіть Прізвище учня: "; U_COLOR std::cin >> shurname; A_COLOR
 			SwapPath(path, number);
 			system("cls");
 			if (!ReadInfo(data, path))
 			{
-				SearchInfo(data, name, shurname);
+				if (!data.empty())
+				{
+					std::cout << "Введіть Ім’я учня: "; U_COLOR std::cin >> name; A_COLOR
+					std::cout << "Введіть Прізвище учня: "; U_COLOR std::cin >> shurname; A_COLOR
+					system("cls");
+					SearchInfo(data, name, shurname);
+				}
+				else
+				{ E_COLOR std::cout << "Даних у цьому файлі НЕМАЄ!!!" << std::endl; A_COLOR }
 				system("pause");
 			}
 			break;
@@ -85,34 +96,39 @@ int main()
 			SwapPath(path, number);
 			system("cls");
 			if (!ReadInfo(data, path))
-			{
-				std::cout << "1) Сортувати від А до Я" << std::endl;
-				std::cout << "2) Сортувати від Я до А" << std::endl;
-				std::cout << "Ваш вибір: "; U_COLOR std::cin >> _stateMenu; A_COLOR
-					if (_stateMenu == 1)
-						SortingAlpavit(data, Sort_for_A_to_Z); check = false;
-				if (_stateMenu == 2)
-					SortingAlpavit(data, Sort_for_Z_to_A); check = false;
-				system("cls");
-				if (check)
+			{ 
+				if (!data.empty())
 				{
-					E_COLOR std::cout << "Дані НЕ відсортовані!!!" << std::endl; A_COLOR
+					std::cout << "1) Сортувати від А до Я" << std::endl;
+					std::cout << "2) Сортувати від Я до А" << std::endl;
+					std::cout << "Ваш вибір: "; U_COLOR std::cin >> _stateMenu; A_COLOR
+
+					if (_stateMenu == 1)
+						{ SortingAlpavit(data, Sort_for_A_to_Z); check = false; }
+					if (_stateMenu == 2)
+						{ SortingAlpavit(data, Sort_for_Z_to_A); check = false; }
+					system("cls");
+
+					if (check)
+						{ E_COLOR std::cout << "Дані НЕ відсортовані!!!" << std::endl; A_COLOR }
+					else
+						{ S_COLOR std::cout << "Дані успішно відсортовані!!!" << std::endl; A_COLOR	}
+
+					std::cout << "Зберегти назад у файл? (1 - так, 0 - ні): "; U_COLOR std::cin >> check; A_COLOR
+						if (check)
+						{
+							Student st;
+							Delete_Oll_Info(path);
+							for (size_t i = 0, n = data.size(); i < n; i++)
+							{
+								st = data[i].GetStudentInfo();
+								SaveInFile(st, path);
+							}
+						}
 				}
 				else
-				{
-					S_COLOR std::cout << "Дані успішно відсортовані!!!" << std::endl; A_COLOR
-				}
-				std::cout << "Зберегти назад у файл? (1 - так, 0 - ні): "; U_COLOR std::cin >> check; A_COLOR
-					if (check)
-					{
-						Student st;
-						Delete_Oll_Info(path);
-						for (size_t i = 0, n = data.size(); i < n; i++)
-						{
-							st = data[i].GetStudentInfo();
-							SaveInFile(st, path);
-						}
-					}
+				{ E_COLOR std::cout << "Даних у цьому файлі НЕМАЄ!!!" << std::endl; A_COLOR }
+
 				system("pause");
 			}
 			break;
@@ -120,13 +136,18 @@ int main()
 		case 5:
 			system("cls");
 			std::cout << "Введіть клас, у якому потрібно відформатувати інформацію: "; U_COLOR std::cin >> number; A_COLOR
-			std::cout << "Введіть Ім’я учня: "; U_COLOR std::cin >> name; A_COLOR
-			std::cout << "Введіть Прізвище учня: "; U_COLOR std::cin >> shurname; A_COLOR
 			SwapPath(path, number);
 			if (!ReadInfo(data, path))
 			{
 				system("cls");
-				FormatInfo(data, path, name, shurname);
+				if (!data.empty())
+				{
+					std::cout << "Введіть Ім’я учня: "; U_COLOR std::cin >> name; A_COLOR
+					std::cout << "Введіть Прізвище учня: "; U_COLOR std::cin >> shurname; A_COLOR
+					FormatInfo(data, path, name, shurname);
+				}
+				else
+				{ E_COLOR std::cout << "Даних у цьому файлі НЕМАЄ!!!" << std::endl; A_COLOR	}
 				system("pause");
 			}
 			break;
@@ -134,12 +155,19 @@ int main()
 		case 6:
 			system("cls");
 			std::cout << "Введіть клас, у якому потрібно видалити інформацію: "; U_COLOR std::cin >> number; A_COLOR
-			std::cout << "Введіть Ім’я учня: "; U_COLOR std::cin >> name; A_COLOR
-			std::cout << "Введіть Прізвище учня: "; U_COLOR std::cin >> shurname; A_COLOR
 			SwapPath(path, number);
 			system("cls");
-			if(!ReadInfo(data, path))
-				DeleteInfo(data, path, name, shurname);
+			if (!ReadInfo(data, path))
+			{
+				if (!data.empty())
+				{
+					std::cout << "Введіть Ім’я учня: "; U_COLOR std::cin >> name; A_COLOR
+					std::cout << "Введіть Прізвище учня: "; U_COLOR std::cin >> shurname; A_COLOR
+					DeleteInfo(data, path, name, shurname);
+				}
+				else
+				{ E_COLOR std::cout << "Даних у цьому файлі НЕМАЄ!!!" << std::endl; A_COLOR	}
+			}
 			system("pause");
 			break;
 
@@ -152,6 +180,13 @@ int main()
 				SwapPath(path, number);
 				system("cls");
 				Delete_Oll_Info(path);
+				if (!ReadInfo(data, path))
+				{
+					if (!data.empty())
+					{ E_COLOR std::cout << "Дані НЕ ВИДАЛЕНО!!!" << std::endl; A_COLOR }
+					else 
+					{ S_COLOR std::cout << "Дані ВИДАЛЕНО!!!" << std::endl; A_COLOR }
+				}
 				system("pause");
 			}
 			break;
@@ -176,4 +211,6 @@ int main()
 			break;
 		}
 	}
+
+	return 0;
 }

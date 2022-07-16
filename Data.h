@@ -1,12 +1,9 @@
 #pragma once
-//#ifndef _DATA_H_
-//#define _DATA_H_
+#ifndef _DATA_H_
+#define _DATA_H_
 
 #include <iostream>
-#include <fstream>
 #include <string>
-#include <deque>
-
 
 class Data;
 struct Payment
@@ -44,5 +41,4 @@ public:
 private:
 	Student st;
 };
-
-//#endif // !_DATA_H_
+#endif // !_DATA_H_
