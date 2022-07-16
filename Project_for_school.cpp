@@ -32,7 +32,7 @@ int main()
 	GET_CONSOLE
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	//Loading(5, "Завантаження");
+	Loading(5, "Завантаження");
 
 	bool check = true;
 	std::string name, shurname;
