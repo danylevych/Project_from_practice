@@ -19,19 +19,19 @@ Data::Data(Student st)
 void Data::Print()
 {
 	GET_CONSOLE
-	std::cout << "Ïð³çâèùå ²ì’ÿ Ïîáàòüêîâ³: "; U_COLOR  std::cout << st.shurname << " "
+	std::cout << "ÐŸÑ€Ñ–Ð·Ð²Ð¸Ñ‰Ðµ Ð†Ð¼â€™Ñ ÐŸÐ¾Ð±Ð°Ñ‚ÑŒÐºÐ¾Ð²Ñ–: "; U_COLOR  std::cout << st.shurname << " "
 		<< st.name << " " << st.patronimic << std::endl; A_COLOR
-	std::cout << "Íîìåð òåëåôîíó: "; U_COLOR std::cout << "+38" << st.number; A_COLOR
-	std::cout << "\nÑïëàòà çà ¿äàëüíþ:\n";
-	std::cout << "Çà âåðåñåíü: "; U_COLOR std::cout << CheckPay(st.pay.PaySeptember) << std::endl; A_COLOR
-	std::cout << "Çà æîâòåíü: "; U_COLOR std::cout << CheckPay(st.pay.PayOctober) << std::endl; A_COLOR
-	std::cout << "Çà ëèñòîïàä: "; U_COLOR std::cout << CheckPay(st.pay.PayNovember) << std::endl; A_COLOR
-	std::cout << "Çà ãðóäåíü: "; U_COLOR std::cout << CheckPay(st.pay.PayDecember) << std::endl; A_COLOR
-	std::cout << "Çà ñ³÷åíü: "; U_COLOR std::cout << CheckPay(st.pay.PayJanury) << std::endl; A_COLOR
-	std::cout << "Çà ëþòèé: "; U_COLOR std::cout << CheckPay(st.pay.PayFebruary) << std::endl; A_COLOR
-	std::cout << "Çà áåðåçåíü: "; U_COLOR std::cout << CheckPay(st.pay.PayMarch) << std::endl; A_COLOR
-	std::cout << "Çà êâ³òåíü: "; U_COLOR std::cout << CheckPay(st.pay.PayApril) << std::endl; A_COLOR
-	std::cout << "Çà òðàâåíü: "; U_COLOR std::cout << CheckPay(st.pay.PayMay) << std::endl; A_COLOR
+	std::cout << "ÐÐ¾Ð¼ÐµÑ€ Ñ‚ÐµÐ»ÐµÑ„Ð¾Ð½Ñƒ: "; U_COLOR std::cout << "+38" << st.number; A_COLOR
+	std::cout << "\nÐ¡Ð¿Ð»Ð°Ñ‚Ð° Ð·Ð° Ñ—Ð´Ð°Ð»ÑŒÐ½ÑŽ:\n";
+	std::cout << "Ð—Ð° Ð²ÐµÑ€ÐµÑÐµÐ½ÑŒ: "; U_COLOR std::cout << CheckPay(st.pay.PaySeptember) << std::endl; A_COLOR
+	std::cout << "Ð—Ð° Ð¶Ð¾Ð²Ñ‚ÐµÐ½ÑŒ: "; U_COLOR std::cout << CheckPay(st.pay.PayOctober) << std::endl; A_COLOR
+	std::cout << "Ð—Ð° Ð»Ð¸ÑÑ‚Ð¾Ð¿Ð°Ð´: "; U_COLOR std::cout << CheckPay(st.pay.PayNovember) << std::endl; A_COLOR
+	std::cout << "Ð—Ð° Ð³Ñ€ÑƒÐ´ÐµÐ½ÑŒ: "; U_COLOR std::cout << CheckPay(st.pay.PayDecember) << std::endl; A_COLOR
+	std::cout << "Ð—Ð° ÑÑ–Ñ‡ÐµÐ½ÑŒ: "; U_COLOR std::cout << CheckPay(st.pay.PayJanury) << std::endl; A_COLOR
+	std::cout << "Ð—Ð° Ð»ÑŽÑ‚Ð¸Ð¹: "; U_COLOR std::cout << CheckPay(st.pay.PayFebruary) << std::endl; A_COLOR
+	std::cout << "Ð—Ð° Ð±ÐµÑ€ÐµÐ·ÐµÐ½ÑŒ: "; U_COLOR std::cout << CheckPay(st.pay.PayMarch) << std::endl; A_COLOR
+	std::cout << "Ð—Ð° ÐºÐ²Ñ–Ñ‚ÐµÐ½ÑŒ: "; U_COLOR std::cout << CheckPay(st.pay.PayApril) << std::endl; A_COLOR
+	std::cout << "Ð—Ð° Ñ‚Ñ€Ð°Ð²ÐµÐ½ÑŒ: "; U_COLOR std::cout << CheckPay(st.pay.PayMay) << std::endl; A_COLOR
 }
 
 void Data::Initiality(Student st)
